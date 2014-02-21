@@ -83,7 +83,7 @@ end
 # => Composer                         #
 # ----------------------------------- #
 
-include_recipe "chef-composer"
+include_recipe "composer"
 
 # ----------------------------------- #
 # => NPM                              #
