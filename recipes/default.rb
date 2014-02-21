@@ -53,22 +53,6 @@ template "/etc/php5/apache2/php.ini" do
 end
 
 # ----------------------------------- #
-# => Database                         #
-# ----------------------------------- #
-
-include_recipe "mysql::server"
-include_recipe "database::mysql"
-
-mysql_database 'backend' do
-  connection ({
-    :host => "localhost",
-    :username => 'root',
-    :password => node['mysql']['server_root_password']
-  })
-  action :create
-end
-
-# ----------------------------------- #
 # => Scripts                          #
 # ----------------------------------- #
 
