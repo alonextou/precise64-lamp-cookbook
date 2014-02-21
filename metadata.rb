@@ -1,8 +1,15 @@
 name             'precise64-lamp'
-maintainer       'YOUR_NAME'
-maintainer_email 'YOUR_EMAIL'
+maintainer       'Alex Crawford'
+maintainer_email 'awc737@gmail.com'
 license          'All rights reserved'
 description      'Installs/Configures precise64-lamp'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.0'
 
+cookbook 'apt'
+cookbook 'build-essential'
+cookbook 'git'
+cookbook 'php'
+cookbook 'apache2'
+cookbook 'mysql'
+cookbook 'database'
