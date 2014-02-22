@@ -41,7 +41,7 @@ end
 include_recipe "mysql::server"
 
 service "mysql" do
-  action :start
+  action :enable
 end
 
 # ----------------------------------- #
