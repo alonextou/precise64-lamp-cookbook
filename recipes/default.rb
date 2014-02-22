@@ -27,13 +27,12 @@ end
 # => Apache                           #
 # ----------------------------------- #
 
-=begin // this interferes with vhosts
 include_recipe "apache2"
 
 web_app "web.dev" do
   server_name "web.dev"
   docroot "/var/www"
-=end
+end
 
 # ----------------------------------- #
 # => MySQL                            #
