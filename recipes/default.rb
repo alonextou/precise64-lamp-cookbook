@@ -29,9 +29,19 @@ end
 
 include_recipe "apache2"
 
-web_app "web.dev" do
-  server_name "web.dev"
-  docroot "/var/www"
+sites = []
+sites = data_bag("sites")
+sites.each do |name|
+  site = data_bag_item("sites", name)
+
+  web_app "#{site['name']}.#{node['precise64-lamp']['hostname']}" do
+    server_name "#{site['name']}.#{node['precise64-lamp']['hostname']}"
+    docroot "#{node['precise64-lamp']['webroot']}.#{site['path']}"
+  end
+
+   bash "hosts" do
+     code "echo 127.0.0.1 #{site['name']}.#{node['precise64-lamp']['hostname']} >> /etc/hosts"
+   end
 end
 
 # ----------------------------------- #
@@ -39,9 +49,25 @@ end
 # ----------------------------------- #
 
 include_recipe "mysql::server"
+include_recipe "database::mysql"
 
 service "mysql" do
   action :enable
+end
+
+databases = []
+databases = data_bag("databases")
+databases.each do |name|
+  database = data_bag_item("databases", name)
+
+  mysql_database "#{database['name']}" do
+    connection ({
+      :host => "#{database['host']}",
+      :username => "#{database['username']}",
+      :password => "#{database['password']}"
+    })
+    action :create
+  end
 end
 
 # ----------------------------------- #
