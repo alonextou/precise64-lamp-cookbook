@@ -36,7 +36,7 @@ sites.each do |name|
 
   web_app "#{site['name']}.#{node['precise64-lamp']['hostname']}" do
     server_name "#{site['name']}.#{node['precise64-lamp']['hostname']}"
-    docroot "#{node['precise64-lamp']['webroot']}.#{site['path']}"
+    docroot "#{node['precise64-lamp']['webroot']}/#{site['path']}"
   end
 
    bash "hosts" do
