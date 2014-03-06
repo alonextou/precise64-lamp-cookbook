@@ -62,9 +62,9 @@ databases.each do |name|
 
   mysql_database "#{database['name']}" do
     connection ({
-      :host => "#{database['host']}",
-      :username => "#{database['username']}",
-      :password => "#{database['password']}"
+      :host => "127.0.0.1",
+      :username => "root",
+      :password => node['mysql']['server_root_password']
     })
     action :create
   end
