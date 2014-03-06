@@ -51,6 +51,10 @@ end
 include_recipe "mysql::server"
 include_recipe "database::mysql"
 
+=begin
+include_recipe "mysql::server"
+include_recipe "database::mysql"
+
 service "mysql" do
   action :enable
 end
@@ -69,6 +73,7 @@ databases.each do |name|
     action :create
   end
 end
+=end
 
 # ----------------------------------- #
 # => PHP                              #
