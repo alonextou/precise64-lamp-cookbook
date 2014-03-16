@@ -107,3 +107,21 @@ template "/usr/local/bin/chweb" do
   group "staff"
   mode "0755"
 end
+
+# ----------------------------------- #
+# => NPM                              #
+# ----------------------------------- #
+
+execute "npm install grunt" do
+  command "npm install -g grunt-cli"
+  action :run
+end
+
+# ----------------------------------- #
+# => RubyGems                         #
+# ----------------------------------- #
+
+execute "gem install compass" do
+  command "gem install compass --no-rdoc --no-ri"
+  action :run
+end
